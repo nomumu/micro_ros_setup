@@ -3,7 +3,7 @@ pushd $FW_TARGETDIR >/dev/null
     mkdir toolchain
 
     pushd toolchain >/dev/null
-        git clone -b v4.1 --recursive https://github.com/espressif/esp-idf.git
+        git clone -b v4.3 --recursive https://github.com/espressif/esp-idf.git
 
         mkdir espressif
         export IDF_TOOLS_PATH=$(pwd)/espressif
