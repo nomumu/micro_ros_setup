@@ -31,7 +31,7 @@ pushd $FW_TARGETDIR >/dev/null
     popd >/dev/null
 
     # Import repos
-    vcs import --input $PREFIX/config/$RTOS/$PLATFORM/board.repos >/dev/null
+    vcs import --input $PREFIX/config/$RTOS/$PLATFORM/board.repos --recursive >/dev/null
 
     # ignore broken packages
     touch mcu_ws/ros2/rcl_logging/rcl_logging_log4cxx/COLCON_IGNORE
