@@ -10,14 +10,14 @@ PREFIX=$(ros2 pkg prefix micro_ros_setup)
 # Checking if firmware exists
 if [ -d $FW_TARGETDIR ]; then
     RTOS=$(head -n1 $FW_TARGETDIR/PLATFORM)
-    PLATFORM=$(head -n2 firmware/PLATFORM | tail -n1)
+    PLATFORM=$(head -n2 $FW_TARGETDIR/PLATFORM | tail -n1)
 else
     echo "Firmware folder not found. Please use ros2 run micro_ros_setup create_firmware_ws.sh to create a new project."
     exit 1
 fi
 
 # Flash specific firmware folder if needed
-if [ $PLATFORM != "generic" ] && [ -d "$PREFIX/config/$RTOS/generic" ]; then
+if [ -d "$PREFIX/config/$RTOS/generic" ]; then
     if [ -f $PREFIX/config/$RTOS/generic/flash.sh ]; then
       echo "Flashing firmware for $RTOS platform $PLATFORM"
       . $PREFIX/config/$RTOS/generic/flash.sh
